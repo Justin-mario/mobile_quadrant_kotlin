@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,7 +15,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
@@ -36,175 +34,51 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Quadrant(
-                        stringResource(R.string.first_quadrant_title),
-                        stringResource(R.string.first_quadrant_content),
-                        stringResource(R.string.second_quadrant_title),
-                        stringResource(R.string.second_quadrant_content),
-                        stringResource(R.string.third_quadrant_title),
-                        stringResource(R.string.third_quadrant_content),
-                        stringResource(R.string.fourth_quadrant_title),
-                        stringResource(R.string.fourth_quadrant_content))
+                    QuadrantBox()
                 }
             }
         }
     }
 }
 
-@Composable
-fun GreenBox(firstQuadrantTitle: String, firstQuadrantContent: String){
-    Box(
-        modifier = Modifier
-            .background(Color.Green)
-            .fillMaxWidth(0.5f)
-            .fillMaxHeight(0.5f)
-    ) {
-        Column(modifier = Modifier
-            .padding(16.dp)
-        ) {
-            Text(text = firstQuadrantTitle,
-                textAlign = TextAlign.Justify,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 16.dp))
-            Text(text = firstQuadrantContent, textAlign = TextAlign.Justify)
-        }
 
-    }
-}
-
-@Composable
-fun YellowBox(secondQuadrantTitle: String, secondQuadrantContent: String){
-    Box(
-        modifier = Modifier
-            .background(Color.Yellow)
-            .fillMaxWidth()
-            .fillMaxHeight(0.5f)
-    ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text(text = secondQuadrantTitle,
-                textAlign = TextAlign.Justify,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 16.dp))
-            Text(text = secondQuadrantContent, textAlign = TextAlign.Justify)
-        }
-    }
-}
-
-@Composable
-fun CyanBox(thirdQuadrantTitle: String, thirdQuadrantContent: String){
-    Box(
-        modifier = Modifier
-            .background(Color.Cyan)
-            .fillMaxWidth(0.5f)
-            .fillMaxHeight()
-    ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text(text = thirdQuadrantTitle,
-                textAlign = TextAlign.Justify,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 16.dp))
-            Text(text = thirdQuadrantContent, textAlign = TextAlign.Justify)
-        }
-
-    }
-}
-
-@Composable
-fun LightGrayBox(fourthQuadrantTitle: String, fourthQuadrantContent: String){
-    Box(
-        modifier = Modifier
-            .background(Color.LightGray)
-            .fillMaxWidth()
-            .fillMaxHeight()
-    ) {
-        Column(modifier = Modifier.padding(16.dp)){
-            Text(text = fourthQuadrantTitle,
-                textAlign = TextAlign.Justify,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 16.dp))
-            Text(text = fourthQuadrantContent, textAlign = TextAlign.Justify)
-        }
-
-    }
-}
-
-
-
-@Composable
-fun Quadrant(firstQuadrantTitle: String, firstQuadrantContent: String,
-             secondQuadrantTitle: String, secondQuadrantContent: String,
-             thirdQuadrantTitle: String, thirdQuadrantContent: String,
-             fourthQuadrantTitle: String, fourthQuadrantContent: String) {
-
-    Column(modifier = Modifier.fillMaxSize()) {
-        Row(
-            horizontalArrangement = Arrangement.Start,
-            verticalAlignment = Alignment.Top
-        ) {
-            GreenBox(firstQuadrantTitle, firstQuadrantContent)
-            YellowBox(secondQuadrantTitle, secondQuadrantContent)
-        }
-
-        Row(
-            horizontalArrangement = Arrangement.Start,
-            verticalAlignment = Alignment.Bottom
-        ) {
-            CyanBox(thirdQuadrantTitle, thirdQuadrantContent)
-            LightGrayBox(fourthQuadrantTitle, fourthQuadrantContent)
-        }
-    }
-}
 
 @Composable
 fun QuadrantBox(modifier: Modifier = Modifier) {
     Column(modifier = modifier.fillMaxSize()) {
         Row(modifier = Modifier.fillMaxWidth()) {
-
-                QuadrantCard(
-                    color = Color.Green,
-                    header = stringResource(id = R.string.first_quadrant_title),
-                    body = stringResource(id = R.string.first_quadrant_content),
-                    modifier = Modifier
-                        .fillMaxWidth(0.5f)
-                        .fillMaxHeight(0.5f)
-                )
-
-
-                QuadrantCard(
+            QuadrantCard(
+                color = Color.Green,
+                header = stringResource(id = R.string.first_quadrant_title),
+                body = stringResource(id = R.string.first_quadrant_content),
+                modifier = Modifier
+                    .fillMaxWidth(0.5f)
+                    .fillMaxHeight(0.5f))
+            QuadrantCard(
                     color = Color.Yellow,
                     header = stringResource(id = R.string.second_quadrant_title),
                     body = stringResource(id = R.string.second_quadrant_content),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .fillMaxHeight(0.5f)
-                )
-
+                        .fillMaxHeight(0.5f))
         }
         Row(modifier = modifier.fillMaxWidth()) {
-
                 QuadrantCard(
                     color = Color.Cyan,
                     header = stringResource(id = R.string.third_quadrant_title),
                     body = stringResource(id = R.string.third_quadrant_content),
                     modifier = Modifier
                         .fillMaxWidth(0.5f)
-                        .fillMaxHeight()
-                )
-
-
+                        .fillMaxHeight())
                 QuadrantCard(
                     color = Color.LightGray,
                     header = stringResource(id = R.string.fourth_quadrant_title),
                     body = stringResource(id = R.string.fourth_quadrant_content),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .fillMaxHeight()
-                )
-
+                        .fillMaxHeight())
         }
     }
-
-
 }
 
 @Composable
@@ -214,20 +88,16 @@ fun QuadrantCard(color: Color,
                  modifier: Modifier = Modifier) {
     Box(modifier = modifier
         .background(color)
-
-
     ) {
         Column(modifier = Modifier
             .background(color)
+            .padding(start = 12.dp, end = 12.dp, top = 8.dp)
             ) {
                 Text(text = header,
                     fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(vertical = 8.dp))
+                    textAlign = TextAlign.Justify)
                 Text(text = body,
-                    textAlign = TextAlign.Justify,
-                    modifier = Modifier.padding(vertical = 20.dp)
-                    )
+                    textAlign = TextAlign.Justify)
         }
 
     }
@@ -239,14 +109,5 @@ fun QuadrantCard(color: Color,
 fun QuadrantPreview() {
     QuadrantTheme {
         QuadrantBox()
-//        Quadrant(
-//            stringResource(R.string.first_quadrant_title),
-//            stringResource(R.string.first_quadrant_content),
-//            stringResource(R.string.second_quadrant_title),
-//            stringResource(R.string.second_quadrant_content),
-//            stringResource(R.string.third_quadrant_title),
-//            stringResource(R.string.third_quadrant_content),
-//            stringResource(R.string.fourth_quadrant_title),
-//            stringResource(R.string.fourth_quadrant_content))
     }
 }
